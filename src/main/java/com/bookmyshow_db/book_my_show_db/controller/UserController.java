@@ -5,10 +5,9 @@ import com.bookmyshow_db.book_my_show_db.repository.AppUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/db/user")
@@ -26,5 +25,15 @@ public class UserController {
     public ResponseEntity createUser(@RequestBody AppUser user){
         appUserRepository.save(user);
         return new ResponseEntity("User got saved successfully", HttpStatus.CREATED);
+    }
+
+    @GetMapping("/{userID}")
+    public ResponseEntity getUserByID(@PathVariable UUID userID){
+        AppUser user = appUserRepository.findById(userID).orElse(null);
+        if(user == null){
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }else{
+            return new ResponseEntity(user, HttpStatus.OK);
+        }
     }
 }

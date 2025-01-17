@@ -20,6 +20,9 @@ public class AppUser {
     Long contactNumber;
     String userType;
 
+    public AppUser() {
+    }
+
     public AppUser(UUID id, String name, String email, String password, Long contactNumber, String userType) {
         this.id = id;
         this.name = name;
