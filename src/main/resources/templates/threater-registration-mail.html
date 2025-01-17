@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333333;
+        }
+        .email-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            border: 1px solid #dddddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .header {
+            background-color: #007bff;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .banner {
+            text-align: center;
+            padding: 10px 0;
+        }
+        .banner img {
+            max-width: 100%;
+            height: auto;
+        }
+        .content {
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .content h2 {
+            color: #007bff;
+        }
+        .footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #f4f4f4;
+            font-size: 12px;
+            color: #888888;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 20px 0;
+            background-color: #007bff;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<div class="email-container">
+  <div class="header">
+    <h1>Theater Registration Successful!</h1>
+  </div>
+  <div class="banner">
+    <img src="https://source.unsplash.com/600x200/?cinema,theater"
+         alt="Theater Registration Banner">
+  </div>
+  <div class="content">
+    <h2>Dear [[${userName}]],</h2>
+    <p>We are excited to inform you that your theater located at:</p>
+    <p><strong>[[${address}]]</strong></p>
+    <p>has been successfully registered with our application.</p>
+    <p>You can now start listing shows and attract a wider audience through our platform.</p>
+    <p>If you have any questions or need assistance, our support team is always here to help you.</p>
+    <a href="[Theater Dashboard URL]" class="button">Go to Your Dashboard</a>
+  </div>
+  <div class="footer">
+    <p>Thank you for choosing our platform. We look forward to a great partnership!</p>
+    <p>&copy; 2025 Booking Show, All Rights Reserved.</p>
+  </div>
+</div>
+</body>
+</html>

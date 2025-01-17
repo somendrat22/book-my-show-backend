@@ -33,4 +33,18 @@ public class MailUtility {
         mimeMessageHelper.setText(htmlEmail, true);
         javaMailSender.send(mimeMessage);
     }
+
+
+    public void sendThreaterRegistrationMail(String toEmail, String ownerName, String address, String subjectLine) throws Exception{
+        MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+        MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage);
+        Context context = new Context();
+        context.setVariable("userName", ownerName);
+        context.setVariable("address", address);
+        mimeMessageHelper.setSubject(subjectLine);
+        mimeMessageHelper.setTo(toEmail);
+        String htmlEmail = templateEngine.process("threater-registration-mail", context);
+        mimeMessageHelper.setText(htmlEmail, true);
+        javaMailSender.send(mimeMessage);
+    }
 }
