@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .email-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            border: 1px solid #dddddd;
+            border-radius: 5px;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: #ffffff;
+            border-radius: 5px 5px 0 0;
+        }
+        .content {
+            margin: 20px 0;
+        }
+        .content h2 {
+            color: #333333;
+        }
+        .details {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+        .footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #f4f4f4;
+            font-size: 12px;
+            color: #777777;
+        }
+    </style>
+</head>
+<body>
+<div class="email-container">
+    <div class="header">
+        <h1>Hall Registration Confirmation</h1>
+    </div>
+    <div class="content">
+        <h2>Hello, [[${ownerName}]] </h2>
+        <p>Thank you for registering your hall in our system! Below are the details of your registered hall:</p>
+        <div class="details">
+            <strong>Theater Location:</strong> [[${theaterLocation}]]<br>
+            <strong>Number of Seats:</strong> [[${hallSeats}]]<br>
+            <strong>Owner Name:</strong> [[${ownerName}]]
+        </div>
+        <p>If you need any further assistance, feel free to contact our support team.</p>
+    </div>
+    <div class="footer">
+        &copy; 2025 Booking Show Application. All rights reserved.
+    </div>
+</div>
+</body>
+</html>
