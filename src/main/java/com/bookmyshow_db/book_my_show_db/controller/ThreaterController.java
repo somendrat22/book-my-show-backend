@@ -7,10 +7,9 @@ import com.bookmyshow_db.book_my_show_db.repository.ThreaterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/db/threater")
@@ -35,5 +34,11 @@ public class ThreaterController {
     public ResponseEntity createHall(@RequestBody Hall hall){
         hallRepository.save(hall);
         return new ResponseEntity(hall, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/{theaterId}")
+    public ResponseEntity getTheaterById(@PathVariable UUID theaterId){
+        Threater theater = threaterRepository.findById(theaterId).orElse(null);
+        return new ResponseEntity(theater, HttpStatus.OK);
     }
 }
