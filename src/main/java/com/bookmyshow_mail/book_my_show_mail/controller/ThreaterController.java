@@ -1,5 +1,6 @@
 package com.bookmyshow_mail.book_my_show_mail.controller;
 
+import com.bookmyshow_mail.book_my_show_mail.requestbody.Hall;
 import com.bookmyshow_mail.book_my_show_mail.requestbody.Threater;
 import com.bookmyshow_mail.book_my_show_mail.service.ThreaterService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,16 @@ public class ThreaterController {
             return new ResponseEntity("Mail Sent", HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity("Mail Failed", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PutMapping("/hall/create")
+    public ResponseEntity sendHallRegistrationMail(@RequestBody Hall hall){
+        try {
+            threaterService.sendHallRegistrationMail(hall);
+            return new ResponseEntity("Mail Sent", HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }

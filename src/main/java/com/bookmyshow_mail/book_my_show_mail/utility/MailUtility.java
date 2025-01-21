@@ -47,4 +47,24 @@ public class MailUtility {
         mimeMessageHelper.setText(htmlEmail, true);
         javaMailSender.send(mimeMessage);
     }
+
+    public void sendHallRegistrationMail(String toEmail,
+                                         String ownerName,
+                                         String location,
+                                         int seats,
+                                         String subjectLine) throws Exception{
+        MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+        MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage);
+        Context context = new Context();
+        context.setVariable("ownerName", ownerName);
+        context.setVariable("hallSeats", seats);
+        context.setVariable("theaterLocation", location);
+        mimeMessageHelper.setTo(toEmail);
+        mimeMessageHelper.setSubject(subjectLine);
+        String htmlFile  = templateEngine.process("hall-registration-mail", context);
+        mimeMessageHelper.setText(htmlFile, true);
+        javaMailSender.send(mimeMessage);
+
+    }
+
 }
