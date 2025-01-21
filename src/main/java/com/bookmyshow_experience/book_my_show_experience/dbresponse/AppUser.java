@@ -5,6 +5,7 @@ import java.util.UUID;
 
 public class AppUser {
 
+
     UUID id;
     String name;
 
