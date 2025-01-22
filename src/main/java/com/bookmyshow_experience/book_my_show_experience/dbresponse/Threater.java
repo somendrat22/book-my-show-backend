@@ -1,7 +1,7 @@
 package com.bookmyshow_experience.book_my_show_experience.dbresponse;
 
 
-import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+import com.bookmyshow_experience.book_my_show_experience.DTOs.OwnerDto;
 import lombok.Builder;
 
 import java.util.UUID;
@@ -11,7 +11,7 @@ public class Threater {
 
     UUID id;
 
-    AppUser owner;
+    OwnerDto owner;
     String address;
 
     Long threaterHelpLine;
@@ -19,7 +19,7 @@ public class Threater {
     public Threater() {
     }
 
-    public Threater(UUID id, AppUser owner, String address, Long threaterHelpLine) {
+    public Threater(UUID id, OwnerDto owner, String address, Long threaterHelpLine) {
         this.id = id;
         this.owner = owner;
         this.address = address;
@@ -34,11 +34,11 @@ public class Threater {
         this.id = id;
     }
 
-    public AppUser getOwner() {
+    public OwnerDto getOwner() {
         return owner;
     }
 
-    public void setOwner(AppUser owner) {
+    public void setOwner(OwnerDto owner) {
         this.owner = owner;
     }
 
