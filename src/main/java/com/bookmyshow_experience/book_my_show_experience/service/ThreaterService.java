@@ -4,6 +4,7 @@ import com.bookmyshow_experience.book_my_show_experience.DTOs.OwnerDto;
 import com.bookmyshow_experience.book_my_show_experience.dbresponse.AppUser;
 import com.bookmyshow_experience.book_my_show_experience.dbresponse.Hall;
 import com.bookmyshow_experience.book_my_show_experience.dbresponse.Threater;
+import com.bookmyshow_experience.book_my_show_experience.enums.UserType;
 import com.bookmyshow_experience.book_my_show_experience.exceptions.InvalidUser;
 import com.bookmyshow_experience.book_my_show_experience.exceptions.TheaterNotFound;
 import com.bookmyshow_experience.book_my_show_experience.exceptions.UnAuthorised;

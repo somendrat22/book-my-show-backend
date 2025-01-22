@@ -3,6 +3,7 @@ package com.bookmyshow_experience.book_my_show_experience.service;
 import com.bookmyshow_experience.book_my_show_experience.DTOs.OwnerDto;
 import com.bookmyshow_experience.book_my_show_experience.dbresponse.AppUser;
 import com.bookmyshow_experience.book_my_show_experience.dbresponse.Hall;
+import com.bookmyshow_experience.book_my_show_experience.dbresponse.Hall;
 import com.bookmyshow_experience.book_my_show_experience.dbresponse.Threater;
 import com.bookmyshow_experience.book_my_show_experience.exceptions.DatabaseInsertionException;
 import com.bookmyshow_experience.book_my_show_experience.requestbody.CreateUserRB;

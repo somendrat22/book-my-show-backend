@@ -1,6 +1,7 @@
 package com.bookmyshow_experience.book_my_show_experience.util;
 
 import com.bookmyshow_experience.book_my_show_experience.dbresponse.Hall;
+import com.bookmyshow_experience.book_my_show_experience.dbresponse.Hall;
 import com.bookmyshow_experience.book_my_show_experience.dbresponse.Threater;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpMethod;
