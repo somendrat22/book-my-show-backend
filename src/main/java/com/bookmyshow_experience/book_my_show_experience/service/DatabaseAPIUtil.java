@@ -40,6 +40,22 @@ public class DatabaseAPIUtil {
         }
     }
 
+    public AppUser getUserByEmail(String email){
+
+        String url = dbApiUrl + "/user/email/" + email;
+        URI finalUrl = URI.create(url);
+
+        RequestEntity request = RequestEntity.get(url).build();
+
+        RestTemplate restTemplate = new RestTemplate();
+        try{
+            ResponseEntity<AppUser> response = restTemplate.exchange(finalUrl, HttpMethod.GET, request, AppUser.class);
+            return response.getBody();
+        }catch (Exception e){
+            throw e;
+        }
+    }
+
     public AppUser getUserById(UUID id){
 
         String url = dbApiUrl + "/user/" + id.toString();

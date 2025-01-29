@@ -1,7 +1,10 @@
 package com.bookmyshow_experience.book_my_show_experience.security;
 
+import com.bookmyshow_experience.book_my_show_experience.dbresponse.AppUser;
+import com.bookmyshow_experience.book_my_show_experience.service.DatabaseAPIUtil;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -10,10 +13,13 @@ import java.util.Date;
 @Component
 public class JwtUtil {
 
+    @Autowired
+    DatabaseAPIUtil databaseAPIUtil;
+
     @Value("${app.secret.key}")
     private String key;
 
-    private final Long expirationTime = 36000000l;
+    private final Long expirationTime = 3600000000000l;
 
     //somtechie22@gmail.com:123456
     public String generateToken(String credentials){
@@ -40,6 +46,14 @@ public class JwtUtil {
             String email = credentials.split(":")[0];
             String password = credentials.split(":")[1];
             // database call
+            System.out.println("Inside validate");
+            AppUser user = databaseAPIUtil.getUserByEmail(email);
+            if(user == null){
+                return false;
+            }
+            if(!user.getPassword().equals(password)){
+                return false;
+            }
             return true;
 
     }
