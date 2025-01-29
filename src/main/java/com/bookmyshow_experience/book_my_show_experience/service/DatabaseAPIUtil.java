@@ -1,8 +1,6 @@
 package com.bookmyshow_experience.book_my_show_experience.service;
 
-import com.bookmyshow_experience.book_my_show_experience.DTOs.OwnerDto;
 import com.bookmyshow_experience.book_my_show_experience.dbresponse.AppUser;
-import com.bookmyshow_experience.book_my_show_experience.dbresponse.Hall;
 import com.bookmyshow_experience.book_my_show_experience.dbresponse.Hall;
 import com.bookmyshow_experience.book_my_show_experience.dbresponse.Threater;
 import com.bookmyshow_experience.book_my_show_experience.exceptions.DatabaseInsertionException;
@@ -42,7 +40,7 @@ public class DatabaseAPIUtil {
         }
     }
 
-    public OwnerDto getUserById(UUID id){
+    public AppUser getUserById(UUID id){
 
         String url = dbApiUrl + "/user/" + id.toString();
         URI finalUrl = URI.create(url);
@@ -51,8 +49,7 @@ public class DatabaseAPIUtil {
 
         RestTemplate restTemplate = new RestTemplate();
         try{
-            ResponseEntity<OwnerDto> response = restTemplate.exchange(finalUrl, HttpMethod.GET, request, OwnerDto.class);
-
+            ResponseEntity<AppUser> response = restTemplate.exchange(finalUrl, HttpMethod.GET, request, AppUser.class);
             return response.getBody();
         }catch (Exception e){
             throw e;
@@ -75,36 +72,35 @@ public class DatabaseAPIUtil {
         }
     }
 
-    public Threater getThreaterById(UUID theaterId){
-
+    public Threater getTheaterById(UUID theaterId){
         String url = dbApiUrl + "/threater/" + theaterId.toString();
         URI finalUrl = URI.create(url);
 
-        RequestEntity request = RequestEntity.get(url).build();
+        RequestEntity request = RequestEntity.get(finalUrl).build();
 
         RestTemplate restTemplate = new RestTemplate();
+
         try{
-            ResponseEntity<Threater> response = restTemplate.exchange(finalUrl, HttpMethod.GET, request, Threater.class);
-            return response.getBody();
+            ResponseEntity<Threater> resp  = restTemplate.exchange(url, HttpMethod.GET, request, Threater.class);
+            return resp.getBody();
         }catch (Exception e){
             throw e;
         }
     }
+
     public Hall createHall(Hall hall){
-        // Calling DB API to save user
-        String finalUrl = dbApiUrl + "/threater/hall/create";
-        URI url = URI.create(finalUrl);
-        // Create Request Entity
-        RequestEntity req = RequestEntity.post(url).body(hall);
-        // Create RestTemplate for hitting request
+        // 1. Create your URL
+        String url = dbApiUrl + "/threater/hall/create";
+        URI finalUrl = URI.create(url);
+        // 2. Create request entity
+        RequestEntity request = RequestEntity.post(finalUrl).body(hall);
+        // 3. Hit the request
         RestTemplate restTemplate = new RestTemplate();
         try{
-            ResponseEntity<Hall> response = restTemplate.exchange(url, HttpMethod.POST, req, Hall.class);
-            return response.getBody();
+            ResponseEntity<Hall> resp = restTemplate.exchange(finalUrl, HttpMethod.POST, request, Hall.class);
+            return resp.getBody();
         }catch (Exception e){
             throw e;
         }
     }
-
-
 }

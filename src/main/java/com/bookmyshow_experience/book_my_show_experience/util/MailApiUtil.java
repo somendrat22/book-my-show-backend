@@ -1,7 +1,6 @@
 package com.bookmyshow_experience.book_my_show_experience.util;
 
 import com.bookmyshow_experience.book_my_show_experience.dbresponse.Hall;
-import com.bookmyshow_experience.book_my_show_experience.dbresponse.Hall;
 import com.bookmyshow_experience.book_my_show_experience.dbresponse.Threater;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpMethod;
@@ -41,7 +40,15 @@ public class MailApiUtil {
         }
     }
 
-    public void sendHallRegistrationMail(Hall resp) {
-
+    public void sendHallRegistrationMail(Hall hall){
+        String url = mailApiURl + "/threater/hall/create";
+        URI finalUrl = URI.create(url);
+        RequestEntity req = RequestEntity.put(finalUrl).body(hall);
+        RestTemplate restTemplate = new RestTemplate();
+        try{
+            ResponseEntity<String> response = restTemplate.exchange(finalUrl, HttpMethod.PUT, req, String.class);
+        }catch (Exception e){
+            throw e;
+        }
     }
 }

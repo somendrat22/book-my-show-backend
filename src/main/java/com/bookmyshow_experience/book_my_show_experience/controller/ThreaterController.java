@@ -53,14 +53,4 @@ public class ThreaterController {
             return new ResponseEntity(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    @PostMapping("/hall/create")
-    public ResponseEntity createHall(@RequestParam UUID ownerID, @RequestParam UUID
-            theaterID,@RequestParam int hallSeats){
-        try{
-            Hall hall = threaterService.createHall(theaterID,ownerID,hallSeats);
-            return new ResponseEntity(hall, HttpStatus.CREATED);
-        }catch (Exception e){
-            return new ResponseEntity(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
 }
