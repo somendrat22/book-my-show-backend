@@ -2,7 +2,7 @@ package com.bookmyshow_experience.book_my_show_experience.controller;
 
 import com.bookmyshow_experience.book_my_show_experience.exceptions.DatabaseInsertionException;
 import com.bookmyshow_experience.book_my_show_experience.requestbody.CreateUserRB;
-import com.bookmyshow_experience.book_my_show_experience.security.JwtUtil;
+
 import com.bookmyshow_experience.book_my_show_experience.service.UserService;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +20,7 @@ public class UserController {
 
     UserService userService;
 
-    @Autowired
-    JwtUtil jwtUtil;
+
     @Autowired
     UserController(UserService userService){
         this.userService = userService;
@@ -33,8 +32,8 @@ public class UserController {
         try{
             userService.createUser(createUserRB);
             String credentials = createUserRB.getEmail() + ":" + createUserRB.getPassword();
-            String token  = jwtUtil.generateToken(credentials);
-            return new ResponseEntity(token,
+
+            return new ResponseEntity("Successfull",
                     HttpStatus.CREATED);
         }catch (DatabaseInsertionException databaseInsertionException){
             return new ResponseEntity<>(databaseInsertionException.getMessage(),
