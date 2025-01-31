@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking Confirmation</title>
+  <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: auto;
+        }
+        .header {
+            text-align: center;
+            color: #333;
+        }
+        .content {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #555;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            text-align: center;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+  <h2 class="header">Booking Confirmation</h2>
+  <p class="content">Dear <strong>[[${userName}]]</strong>,</p>
+  <p class="content">Thank you for booking your tickets with us! Here are your booking details:</p>
+  <table width="100%" border="0" cellspacing="0" cellpadding="5">
+    <tr>
+      <td><strong>Email:</strong></td>
+      <td>[[${userEmail}]]</td>
+    </tr>
+    <tr>
+      <td><strong>Total Tickets:</strong></td>
+      <td>[[${totalTickets}]]</td>
+    </tr>
+    <tr>
+      <td><strong>Total Amount Paid:</strong></td>
+      <td>₹[[${totalAmountPaid}]]</td>
+    </tr>
+    <tr>
+      <td><strong>Payment Method:</strong></td>
+      <td>[[${paymentMethod}]]</td>
+    </tr>
+    <tr>
+      <td><strong>Hall Name:</strong></td>
+      <td>[[${hallName}]]</td>
+    </tr>
+    <tr>
+      <td><strong>Theater Name:</strong></td>
+      <td>[[${theaterName}]]</td>
+    </tr>
+    <tr>
+      <td><strong>Theater Address:</strong></td>
+      <td>[[${theaterAddress}]]</td>
+    </tr>
+  </table>
+  <p class="content">We look forward to providing you with an amazing experience!</p>
+  <p class="content">Best Regards,<br>Booking Team</p>
+  <p class="footer">This is an automated email, please do not reply.</p>
+</div>
+</body>
+</html>

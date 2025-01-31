@@ -1,5 +1,6 @@
 package com.bookmyshow_mail.book_my_show_mail.utility;
 
+import com.bookmyshow_mail.book_my_show_mail.requestbody.Booking;
 import jakarta.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -65,6 +66,27 @@ public class MailUtility {
         mimeMessageHelper.setText(htmlFile, true);
         javaMailSender.send(mimeMessage);
 
+    }
+
+
+    public void sendBookingMail(Booking booking) throws Exception{
+        MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+        MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage);
+        Context context = new Context();
+        context.setVariable("userName", booking.getUserName());
+        context.setVariable("userEmail", booking.getUserEmail());
+        context.setVariable("totalTickets", booking.getTotalTickets());
+        context.setVariable("totalAmountPaid", booking.getTotalAmountPaid());
+        context.setVariable("paymentMethod", booking.getPaymentMethod());
+        context.setVariable("hallName", booking.getHallName());
+        context.setVariable("theaterName", booking.getTheaterName());
+        context.setVariable("theaterAddress", booking.getTheaterAddress());
+
+        mimeMessageHelper.setTo(booking.getUserEmail());
+        mimeMessageHelper.setSubject("Booking Confirmation - " + booking.getTheaterName());
+        String htmlFile  = templateEngine.process("booking-mail", context);
+        mimeMessageHelper.setText(htmlFile, true);
+        javaMailSender.send(mimeMessage);
     }
 
 }
