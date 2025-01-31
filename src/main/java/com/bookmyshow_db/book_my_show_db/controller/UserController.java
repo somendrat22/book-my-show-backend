@@ -36,4 +36,11 @@ public class UserController {
             return new ResponseEntity(user, HttpStatus.OK);
         }
     }
+
+
+    @GetMapping("/email/{emailId}")
+    public ResponseEntity getUserByEmail(@PathVariable String emailId){
+        // Call Repository
+        return new ResponseEntity(appUserRepository.findByEmail(emailId), HttpStatus.OK);
+    }
 }
